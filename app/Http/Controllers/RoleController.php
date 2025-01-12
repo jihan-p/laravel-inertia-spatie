@@ -7,6 +7,7 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+
 class RoleController extends Controller implements HasMiddleware // Implement Middleware Spatie
 {
     public static function middleware()
@@ -18,6 +19,7 @@ class RoleController extends Controller implements HasMiddleware // Implement Mi
             new Middleware('permission:roles delete', only: ['destroy']),
         ];
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -60,7 +62,7 @@ class RoleController extends Controller implements HasMiddleware // Implement Mi
      */
     public function store(Request $request)
     {
-         // validate request
+        // validate request
          $request->validate([
             'name' => 'required|min:3|max:255|unique:roles',
             'selectedPermissions' => 'required|array|min:1',
@@ -127,6 +129,7 @@ class RoleController extends Controller implements HasMiddleware // Implement Mi
         // render view
         return to_route('roles.index');
     }
+
     /**
      * Remove the specified resource from storage.
      */
