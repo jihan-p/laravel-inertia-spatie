@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
+
 class UserController extends Controller implements HasMiddleware
 {
 
@@ -19,6 +20,7 @@ class UserController extends Controller implements HasMiddleware
             new Middleware('permission:users delete', only : ['destroy']),
         ];
     }
+    
     /**
      * Display a listing of the resource.
      */
