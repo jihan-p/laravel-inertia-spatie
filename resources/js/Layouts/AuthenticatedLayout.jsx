@@ -31,11 +31,16 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Dashboard
                                 </NavLink>
-                                {hasAnyPermission(['permissions index']) &&
+                                {hasAnyPermission(['permissions index']) && (
                                     <NavLink href={route('permissions.index')} active={route().current('permissions*')}>
                                         Permissions
                                     </NavLink>
-                                }
+                                )}
+                                {hasAnyPermission(["roles index"]) && (
+                                    <NavLink href={route("roles.index")} active={route().current("roles*")}>
+                                        Roles
+                                    </NavLink>
+                                )}
                             </div>
                         </div>
 
@@ -88,7 +93,7 @@ export default function AuthenticatedLayout({ header, children }) {
                             <button
                                 onClick={() =>
                                     setShowingNavigationDropdown(
-                                        (previousState) => !previousState,
+                                        (previousState) => !previousState
                                     )
                                 }
                                 className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
@@ -140,11 +145,23 @@ export default function AuthenticatedLayout({ header, children }) {
                         >
                             Dashboard
                         </ResponsiveNavLink>
-                        {hasAnyPermission(['permissions index']) &&
+                        {hasAnyPermission(['permissions index']) && (
                             <ResponsiveNavLink href={route('permissions.index')} active={route().current('permissions*')}>
                                 Permissions
                             </ResponsiveNavLink>
-                        }
+                        )}
+
+                        {hasAnyPermission(["roles index"]) && (
+                            <ResponsiveNavLink
+                                href={route("roles.index")}
+                                active={route().current("roles*")}
+                            >
+                                Roles
+                            </ResponsiveNavLink>
+                        )}
+
+                       
+
                     </div>
 
                     <div className="border-t border-gray-200 pb-1 pt-4">
